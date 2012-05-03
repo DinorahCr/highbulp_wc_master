@@ -129,8 +129,8 @@ class GameController < ApplicationController
     ## show survey!
   end
   
-  def thankyou
-   render 'thank_you.html.haml'
-   end
+  def thank_you
+   #redirect after evaluation is completed
+  end
    
 end
