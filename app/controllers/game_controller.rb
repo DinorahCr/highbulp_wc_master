@@ -1,6 +1,7 @@
 class GameController < ApplicationController
   layout "game_layout" #don't use normal headers and such for now...
 
+ 
   @@DEFAULT_WIDTH = 900#900*1.0 #defaults
   @@DEFAULT_HEIGHT = 500#675*1.0
   # for large map, 900x900 looks good
@@ -21,16 +22,21 @@ class GameController < ApplicationController
   end
 
   def welcome
+    @game_user = puts :params[game_user] || rand(100000000)
+  
   end
 
   def how_to_play
+    @game_user = :params[game_user] || rand(100000000)
   end
 
   def article
+    @game_user = :params[game_user] || rand(100000000)
   end
 
   def play
 		@time_stamp = DateTime.current.strftime("%Y%m%d%H%M%S%L")
+		@game_user = :params[game_user] || rand(100000000)
 
     @default_width = @@DEFAULT_WIDTH
     @default_height = @@DEFAULT_HEIGHT
@@ -107,13 +113,16 @@ class GameController < ApplicationController
   end
 
   def survey_demographic
-    @user_id = 'random_id_should_be_made_here'
+   @game_user = rand(100000000)
     ## show survey
     ## on submit, should redirect to game
   end
 
   def survey_evaluation
-    ## show the survey, etc
-  end
 
+  end
+  
+  def thankyou
+   render 'thank_you.html.haml'
+   end
 end
